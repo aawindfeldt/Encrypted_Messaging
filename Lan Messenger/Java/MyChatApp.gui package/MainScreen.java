@@ -4,6 +4,14 @@ import mychatapp.networking.MessageListener;
 import mychatapp.networking.WriteableGUI;
 import mychatapp.networking.MessageTransmitter;
 
+/**
+ *<h1>MainScreen</h1>
+ * <p>
+ * Source code for each of the controls of the GUI.
+ * @author Andrew Windfeldt
+ * @version 1.0
+ * @since 2017-11-24
+ */
 public class MainScreen extends javax.swing.JFrame  implements WriteableGUI{
 
     /**
@@ -98,11 +106,18 @@ public class MainScreen extends javax.swing.JFrame  implements WriteableGUI{
         pack();
     }// </editor-fold>                        
     MessageListener listener;
+    /**
+     * Starts listening for any incoming messages from specified port
+     * @param click Listen button
+     */
     private void listenButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
         listener = new MessageListener(this, Integer.parseInt(receivePort.getText()));
         listener.start();
     }                                            
-
+    /**
+     * Sends a message to the specified port
+     * @param click Send button
+     */
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
         MessageTransmitter transmitter = new MessageTransmitter(msgTextField.getText(), ipTextField.getText(), Integer.parseInt(targetPort.getText()), this);
         transmitter.start();
